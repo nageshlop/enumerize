@@ -1,6 +1,9 @@
 dist: focal
 language: ruby
 sudo: false
+arch:
+  - amd64
+  - ppc64le
 services:
   - mongodb
 addons:
@@ -20,6 +23,11 @@ env:
   global:
     - DB_USER=postgres
     - DB_PASS=
+    - DB_USER=postgres
+      arch: ppc64le
+    - DB_PASS=
+      arch: ppc64le
+  
   matrix:
     - DB=sqlite3
     - DB=postgresql
@@ -28,6 +36,10 @@ matrix:
   exclude:
     - gemfile: Gemfile.mongo_mapper
       env: DB=postgresql
+    - gemfile: Gemfile.mongo_mapper
+      arch: ppc64le
+      env: DB=postgresql
+
 branches:
   only:
     - master
