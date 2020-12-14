@@ -23,11 +23,6 @@ env:
   global:
     - DB_USER=postgres
     - DB_PASS=
-    - DB_USER=postgres
-      arch: ppc64le
-    - DB_PASS=
-      arch: ppc64le
-  
   matrix:
     - DB=sqlite3
     - DB=postgresql
